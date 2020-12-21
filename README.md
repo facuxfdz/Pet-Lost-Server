@@ -10,6 +10,6 @@ This is a web application to find lost pets
   `git remote rename <old> <new>`  
 - Add the original remote repo  
   `git remote add origin <remote link>`
-- Create a branch in the fork repo, work in it and make push in the fork
+- Create a branch in the fork repo, work in it and make push in the fork  
   `git checkout -b <new branch name>`  
 - When everything is ready, make pull request from the actual branch and wait for the owner's feedback
