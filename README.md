@@ -8,7 +8,6 @@ This is a web application to find lost pets
 =
 - Clone your fork repo in local with this git command  
   `git clone <fork remote link>`  
-  =
 - Rename the remote repo reference  
   `git remote rename <old> <new remote name>` 
   _I recommend call the new remote as "fork"_  
