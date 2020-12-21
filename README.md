@@ -3,8 +3,9 @@ This is a web application to find lost pets
 
 ## Git workflow recomendations
 
-- First create a fork clicking on "fork" button
-- Clone your fork repo in local
+- First create a fork clicking on "fork" button  
+- Clone your fork repo in local  
+  `git clone <remote link>`
 - Rename the remote repo reference
 - Add the original remote repo
 - Create a branch in the fork repo, work in it and make push in the fork
