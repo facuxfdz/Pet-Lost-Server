@@ -10,7 +10,7 @@ This is a web application to find lost pets
   `git clone <fork remote link>`  
 ---
 - Rename the remote repo reference  
-  `git remote rename <old> <new remote name>` 
+  `git remote rename <old> <new remote name>`   
   _I recommend call the new remote as "fork"_  
 ---
 - Add the original remote repo in local with this git command    
