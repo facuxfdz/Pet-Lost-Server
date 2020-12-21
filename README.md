@@ -5,7 +5,7 @@ This is a web application to find lost pets
 
 - First create a fork clicking on "fork" button as follows  
 ![](images/fork.png)  
-======
+---
 - Clone your fork repo in local with this git command  
   `git clone <fork remote link>`  
 - Rename the remote repo reference  
