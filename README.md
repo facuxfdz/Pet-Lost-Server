@@ -24,11 +24,11 @@ This is a web application to find lost pets
 ---
 - Once the files are online, make a new pull request from your branch, if everything is fine, your request will be merged with the main branch
 
-#Software Architecture  
+# Software Architecture  
 - The platforms that will be used to host our application are the following:  
 ![](images/SoftArch.png)  
 ---  
-#Sequence Diagram "user - View - Controller - Model"      
+# Sequence Diagram "user - View - Controller - Model"      
 - The general idea when the user interacts with the user interface will be the next one:  
 ![](images/SeqDiag.png)  
 ---  
