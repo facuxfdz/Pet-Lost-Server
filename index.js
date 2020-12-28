@@ -3,7 +3,9 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 
+app.use(express.json({extended: true})); // Allow json using
 // Using routes
+app.use('/api/users', require('./routes/users'));
 
 
 // Launching app
