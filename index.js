@@ -9,8 +9,8 @@ const PORT = process.env.PORT || 4000;
 // Configs
 connectDB();
 const storage = multer.diskStorage({ // config where the image is saved
+	destination: path.join(__dirname, 'petimages/'),
 	filename: (req, file, cb) => {
-		destination: path.join(__dirname, 'petimages'),
 		cb(null, file.originalname); // Saving the image with the original name with the original extension
 	}
 });
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({ // config where the image is saved
 app.use(express.json({extended: true})); // Allow json using
 app.use(multer({
 	storage,
-	dest: path.join(__dirname, 'petimages/'),
+	dest: path.join(__dirname, './petimages/')
 }).single('image'));
 
 // Using routes
