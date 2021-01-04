@@ -13,8 +13,8 @@ exports.createUser = async (req, res) => {
 		
 		// Create DB object
 		const newUser = {};
-		const {code, name, contact, lost_at} = JSON.parse(req.body.data);
-		newUser.code = code;
+		const {email, name, contact, lost_at} = JSON.parse(req.body.data);
+		newUser.email = email;
 		newUser.name = name;
 		newUser.photo = req.file;
 		newUser.contact = contact;
