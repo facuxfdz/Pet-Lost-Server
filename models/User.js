@@ -12,8 +12,10 @@ const UserSchema = mongoose.Schema({
 		trim: true
 	},
 	photo: {
-		type: String,
-		data: Buffer
+		type: Map,
+		of: String,
+		required: true,
+		trim: true
 	},
 	contact: {
 		type: String,

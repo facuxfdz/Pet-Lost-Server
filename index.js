@@ -3,23 +3,43 @@ const app = express();
 const connectDB = require('./config/db');
 const multer = require('multer');
 const path = require('path');
-
+const filevalidation = require('./service/filevalidation');
+const dataValidation = require('./service/dataValidation');
 const PORT = process.env.PORT || 4000;
 
 // Configs
 connectDB();
-const storage = multer.diskStorage({ // config where the image is saved
+const storage = multer.diskStorage({ // config where and how the image is saved
 	destination: path.join(__dirname, 'petimages/'),
 	filename: (req, file, cb) => {
-		cb(null, file.originalname); // Saving the image with the original name with the original extension
+		const imageName = new Date().getTime() + path.extname(file.originalname);
+		cb(null, imageName); // Saving the image with the original name with a unique name
 	}
 });
 
 // Middlewares
 app.use(express.json({extended: true})); // Allow json using
 app.use(multer({
-	storage,
-	dest: path.join(__dirname, './petimages/')
+	fileFilter: (req, file, cb) => {
+		try {
+			
+			dataValidation.reqValidate(JSON.parse(req.body.data)); // Throw error if the fields are invalid (empty, NaN, etc)
+			filevalidation.validateFile(file); 
+			/* 
+			validateFile throw error if the file has the incorrect extension
+			but not if the file doesn't exist (because multer middleware is not even launched, that validation is done in the usersController)
+			*/
+			cb(null,true); // If the validation goes okay the file is saved
+
+		} catch (error) {
+
+			const errorColour = "\x1b[1;31m%s\x1b[0m"; 
+			console.log(errorColour, 'Invalid data format, try again');
+			cb(null,false); // If the validation goes wrong the file is not saved
+
+		}
+	},
+	storage
 }).single('image'));
 
 // Using routes
