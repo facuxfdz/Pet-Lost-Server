@@ -37,7 +37,6 @@ exports.createUser = async (req, res) => {
 		// Inform successful data saving
 		const SUCCESS_COLOR = "\x1b[1;32m%s\x1b[0m";
 		console.log(SUCCESS_COLOR, 'Data saved successfully');
-		console.log(SUCCESS_COLOR, result.secure_url);
 
 		res.json({msg: "Data saved successfully"});
 
@@ -48,7 +47,7 @@ exports.createUser = async (req, res) => {
 	*/
 		const ERROR_COLOR = "\x1b[1;31m%s\x1b[0m"; 
 		console.log(ERROR_COLOR, "An error has ocurred");
-		res.json({error});
+		res.json({error: 'An error has ocurred'});
 	}
 }
 
