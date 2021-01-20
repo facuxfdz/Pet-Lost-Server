@@ -1,7 +1,7 @@
 
 
 exports.reqValidate = data => {
-    if(!data.code || !Number.isInteger(data.code) ){
+    if(!data.email || data.email.trim() === ""){
         throw new Error();
     }
     if(!data.name || data.name.trim() === ""){
