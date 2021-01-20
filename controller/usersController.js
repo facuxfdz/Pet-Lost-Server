@@ -16,7 +16,10 @@ exports.createUser = async (req, res) => {
 		// Create DB object with the req object data
 		const newUser = {};
 		const {code, name, contact, lost_at} = JSON.parse(req.body.data);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> parent of 929c11d... code field deleted from user model, email field added, it will be a unique user field
 		newUser.code = code;
 		newUser.name = name;
 		newUser.contact = contact;
