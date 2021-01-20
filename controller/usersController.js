@@ -47,6 +47,7 @@ exports.createUser = async (req, res) => {
 	*/
 		const ERROR_COLOR = "\x1b[1;31m%s\x1b[0m"; 
 		console.log(ERROR_COLOR, "An error has ocurred");
+
 		res.json({error});
 	}
 }
