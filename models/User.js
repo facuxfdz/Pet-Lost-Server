@@ -11,11 +11,13 @@ const UserSchema = mongoose.Schema({
 		required: true,
 		trim: true
 	},
-	photo: {
-		type: Map,
-		of: String,
+	photo_url: {
+		type: String,
+		required: true
+	},
+	public_id: {
+		type: String,
 		required: true,
-		trim: true
 	},
 	contact: {
 		type: String,

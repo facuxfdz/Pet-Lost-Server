@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/facuxfdz/Pet-Lost-Server#readme",
   "dependencies": {
+    "cloudinary": "^1.23.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "fs-extra": "^9.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.9",
     "multer": "^1.4.2"

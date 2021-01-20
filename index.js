@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const filevalidation = require('./service/filevalidation');
 const dataValidation = require('./service/dataValidation');
+const cloudinary = require('cloudinary');
 const PORT = process.env.PORT || 4000;
 
 // Configs
@@ -15,6 +16,11 @@ const storage = multer.diskStorage({ // config where and how the image is saved
 		const imageName = new Date().getTime() + path.extname(file.originalname);
 		cb(null, imageName); // Saving the image with the original name with a unique name
 	}
+});
+cloudinary.config({
+	cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+	api_key: process.env.CLOUDINARY_API_KEY,
+	api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
 // Middlewares
@@ -34,7 +40,7 @@ app.use(multer({
 		} catch (error) {
 
 			const errorColour = "\x1b[1;31m%s\x1b[0m"; 
-			console.log(errorColour, 'Invalid data format, try again');
+			console.log(errorColour, 'An error has ocurred');
 			cb(null,false); // If the validation goes wrong the file is not saved
 
 		}
