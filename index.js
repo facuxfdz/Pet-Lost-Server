@@ -40,7 +40,7 @@ app.use(multer({
 		} catch (error) {
 
 			const errorColour = "\x1b[1;31m%s\x1b[0m"; 
-			console.log(errorColour, 'An error has ocurred in index');
+			console.log(errorColour, 'An error has ocurred');
 			cb(null,false); // If the validation goes wrong the file is not saved
 
 		}
