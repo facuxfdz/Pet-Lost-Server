@@ -4,7 +4,6 @@ const connectDB = require('./config/db');
 const multer = require('multer');
 const path = require('path');
 const filevalidation = require('./service/filevalidation');
-const dataValidation = require('./service/dataValidation');
 const cloudinary = require('cloudinary');
 const PORT = process.env.PORT || 4000;
 
@@ -29,7 +28,6 @@ app.use(multer({
 	fileFilter: (req, file, cb) => {
 		try {
 			
-			dataValidation.reqValidate(JSON.parse(req.body.data)); // Throw error if the fields are invalid (empty, NaN, etc)
 			filevalidation.validateFile(file); 
 			/* 
 			validateFile throw error if the file has the incorrect extension
@@ -50,6 +48,7 @@ app.use(multer({
 
 // Using routes
 app.use('/api/users', require('./routes/users'));
+app.use('/api/login', require('./routes/login'));
 
 
 // Launching app

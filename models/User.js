@@ -24,10 +24,11 @@ const UserSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	contact: {
+	email: {
 		type: String,
 		required: true,
-		trim: true
+		trim: true,
+		unique: true
 	},
 	lost_at: {
 		type: Date,

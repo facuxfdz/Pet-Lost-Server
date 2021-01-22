@@ -20,5 +20,9 @@ const connectDB = async () => {
 	}
 
 }
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
 
 module.exports = connectDB;

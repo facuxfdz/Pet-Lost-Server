@@ -4,10 +4,15 @@ const cloudinary = require('cloudinary');
 const fs = require('fs-extra');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { Error } = require('mongoose');
+const { validationResult } = require('express-validator');
 
 exports.createUser = async (req, res) => {
 
+	// Checking for errors in check express-validator middleware 
+	const errors = validationResult(req);
+	if(!errors.isEmpty()){
+		return res.status(400).json({errors});
+	}
 
 	try {
 		
@@ -17,13 +22,15 @@ exports.createUser = async (req, res) => {
 			because of this we have to validate here that there are some file uploaded
 		*/
 		
-		// Create DB object with the req object data
-		const newUser = {};
-		const {code, name, password, contact, lost_at} = JSON.parse(req.body.data);
+		const {code, name, password, email, lost_at} = req.body; // Take all the fields from each key value part of req.body
+		let newUser = await User.findOne({ email });
+		if(newUser) return res.status(400).json({ auth: false, msg: 'Email already exists' }); // Checking if the user is already registered
 		
+		// Create DB object with the req object data
+		newUser = {};
 		newUser.code = code;
 		newUser.name = name;
-		newUser.contact = contact;
+		newUser.email = email;
 		newUser.lost_at = lost_at;
 		
 		// Upload photo in our cloud
@@ -54,7 +61,7 @@ exports.createUser = async (req, res) => {
 			expiresIn: 86400
 		}, (error, token) => {
 			if(error){
-				throw Error
+				throw new Error('sign token error');
 			} ;
 			
 			// Inform successful data saving
@@ -71,10 +78,6 @@ exports.createUser = async (req, res) => {
 		const ERROR_COLOR = "\x1b[1;31m%s\x1b[0m"; 
 		console.log(ERROR_COLOR, "An error has ocurred");
 		console.log(ERROR_COLOR, error);
-		res.json({auth: false, error: 'An error has ocurred'});
+		res.json({auth: false, error});
 	}
-}
-
-exports.getUsers = (req, res) => {
-	res.status(200).json({auth: true, msg: `Hello ${req.user.id}!`});
 }
