@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const { validationResult } = require('express-validator');
 
+// Gets all the url images (lost pets)
 exports.getData = async (req, res) => {
     
     try {
@@ -13,7 +14,9 @@ exports.getData = async (req, res) => {
     }
 }
 
+// Gets a limit of url images using a "limit" param in the url
 exports.getLimitData = async (req, res) => {
+
     try {
         const errors = validationResult(req);
         if(!errors.isEmpty()){
