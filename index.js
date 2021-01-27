@@ -49,6 +49,7 @@ app.use(multer({
 // Using routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/login', require('./routes/login'));
+app.use('/api/main', require('./routes/main'));
 
 
 // Launching app
