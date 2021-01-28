@@ -4,7 +4,8 @@ const UserSchema = mongoose.Schema({
 	code: {
 		type: Number,
 		required: true,
-		trim: true
+		trim: true,
+		unique: true
 	},
 	name: {
 		type: String,
@@ -16,11 +17,11 @@ const UserSchema = mongoose.Schema({
 		required: true,
 		trim: true
 	},
-	photo_url: {
+	photo_url: { // LostPet
 		type: String,
 		required: true
 	},
-	public_id: {
+	public_id: { // LostPet
 		type: String,
 		required: true,
 	},
@@ -30,8 +31,12 @@ const UserSchema = mongoose.Schema({
 		trim: true,
 		unique: true
 	},
-	lost_at: {
+	lost_at: { // LostPet
 		type: Date,
+		required: true
+	},
+	isLost: { // LostPet
+		type: Boolean,
 		required: true
 	}
 });

@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
+const { v4: uuidv4 } = require('uuid');
 
 exports.createUser = async (req, res) => {
 
@@ -22,16 +23,18 @@ exports.createUser = async (req, res) => {
 			because of this we have to validate here that there are some file uploaded
 		*/
 		
-		const {code, name, password, email, lost_at} = req.body; // Take all the fields from each key value part of req.body
+		const { name, password, email, lost_at, isLost} = req.body; // Take all the fields from each key value part of req.body
 		let newUser = await User.findOne({ email });
-		if(newUser) return res.status(400).json({ auth: false, msg: 'Email already exists' }); // Checking if the user is already registered
+		if(newUser) return res.status(400).json({ auth: false, msg: 'User already exists' }); // Checking if the user is already registered
 		
 		// Create DB object with the req object data
 		newUser = {};
-		newUser.code = code;
+		newUser.code = parseInt(uuidv4());
 		newUser.name = name;
 		newUser.email = email;
 		newUser.lost_at = lost_at;
+		newUser.isLost = isLost;
+		console.log(newUser.code);
 		
 		// Upload photo in our cloud
 		const result = await cloudinary.v2.uploader.upload(req.file.path);
