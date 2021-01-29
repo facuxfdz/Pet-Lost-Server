@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const LostPet = require('../models/LostPet');
 const { validationResult } = require('express-validator');
 
 // Gets all the url images (lost pets)
@@ -6,7 +6,7 @@ exports.getData = async (req, res) => {
     
     try {
 
-        let response = await User.find({}).select('code photo_url isLost -_id');
+        let response = await LostPet.find({}).select('code photo_url isLost -_id');
         if(response.length === 0) return res.status(200).json({msg: 'There are no lost pets yet'});
         
         // Filter the response to show only lost pets
@@ -28,7 +28,7 @@ exports.getLimitData = async (req, res) => {
             return res.status(400).json({errors});
         }
 
-        let response = await User.find({}).select('code photo_url isLost -_id');
+        let response = await LostPet.find({}).select('code photo_url isLost -_id');
         if(response.length === 0) return res.status(200).json({msg: 'There are no lost pets yet'});
         
         // Filter the response to show only lost pets

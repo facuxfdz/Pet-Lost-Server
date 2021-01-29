@@ -51,6 +51,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/login', require('./routes/login'));
 app.use('/api/main', require('./routes/main'));
 app.use('/api/inform', require('./routes/inform'));
+app.use('/api/pets', require('./routes/pets'));
 
 // Launching app
 app.listen(PORT, () =>{

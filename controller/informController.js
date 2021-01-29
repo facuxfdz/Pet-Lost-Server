@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const LostPet = require('../models/LostPet');
 const { validationResult } = require('express-validator');
 
 exports.checkCode = async (req, res) => {
@@ -7,7 +7,7 @@ exports.checkCode = async (req, res) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) return res.status(400).json({errors});
 
-        const response = await User.findOne({code: req.params.code}).select('code email isLost -_id');
+        const response = await LostPet.findOne({code: req.params.code}).select('code email isLost -_id');
         if(!response) return res.status(404).json({msg: 'The provided code does not exist'});
     
         res.status(200).json({response});        
@@ -24,7 +24,7 @@ exports.updatePetStatus = async (req, res) => {
         if(!errors.isEmpty()) return res.status(400).json({errors});
 
         // Check if the user to edit is in conditions to be edited
-        let oldUser = await User.findOne({code: req.params.code}).select('isLost');
+        let oldUser = await LostPet.findOne({code: req.params.code}).select('isLost');
         if(!oldUser) return res.status(404).json({msg: 'There are no lost pets with that code registered'});
         if(!oldUser.isLost) return res.status(404).json({msg: 'There are no lost pets with that code registered'});
 

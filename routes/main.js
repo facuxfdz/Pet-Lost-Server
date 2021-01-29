@@ -6,6 +6,7 @@ const { param } = require('express-validator');
 router.get('/', 
     mainController.getData
 );
+
 router.get('/:limit', 
     [
         param('limit', 'Invalid limit provided').isInt({min: 1})
