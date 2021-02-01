@@ -3,7 +3,7 @@ const app = express();
 const connectDB = require('./config/db');
 const multer = require('multer');
 const path = require('path');
-const filevalidation = require('./service/filevalidation');
+const filevalidation = require('./helpers/filevalidation');
 const cloudinary = require('cloudinary');
 const PORT = process.env.PORT || 4000;
 

@@ -1,4 +1,4 @@
-const filevalidation = require('../service/filevalidation');
+const filevalidation = require('../helpers/filevalidation');
 const { v4: uuidv4 } = require('uuid'); 
 const { validationResult } = require('express-validator');
 const LostPet = require('../models/LostPet');

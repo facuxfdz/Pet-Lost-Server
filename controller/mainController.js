@@ -1,19 +1,18 @@
 const LostPet = require('../models/LostPet');
-const { validationResult } = require('express-validator');
+const { lostPetsFilter, lostPetsWLimitFilter } = require('../helpers/filter');
+const { checkErrors } = require('../helpers/errorCheck');
 
 // Gets all the url images (lost pets)
 exports.getData = async (req, res) => {
     
     try {
 
-        let response = await LostPet.find({}).select('code photo_url isLost -_id');
-        if(response.length === 0) return res.status(200).json({msg: 'There are no lost pets yet'});
-        
-        // Filter the response to show only lost pets
-        response = response.filter(i => i.isLost);
-        if(response.length === 0) return res.status(200).json({msg: 'There are no lost pets yet'});
+        let dbResponse = await LostPet.find({}).select('code photo_url isLost lost_at -_id');
 
-        res.json({response, msg: 'These are the lost pets that we have registered. Did you see any of them?'});
+        const userResponse = lostPetsFilter(req, res, dbResponse);
+        
+        res.json({userResponse, msg: 'These are the lost pets that we have registered. Did you see any of them?'});
+
     } catch (error) {
         res.status(500).json({error, msg: 'Server error :('});
     }
@@ -23,29 +22,15 @@ exports.getData = async (req, res) => {
 exports.getLimitData = async (req, res) => {
 
     try {
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            return res.status(400).json({errors});
-        }
 
-        let response = await LostPet.find({}).select('code photo_url isLost -_id');
-        if(response.length === 0) return res.status(200).json({msg: 'There are no lost pets yet'});
-        
-        // Filter the response to show only lost pets
-        let i = 0;
-        response = response.map( user => {
-            console.log(i);
-            if(i < req.params.limit && user.isLost){
-                i++;
-                return user;
-            }
-            return;
-        });
-        response = response.filter(user => user);
-        console.log(response);
-        if(response.length === 0) return res.status(200).json({msg: 'There are no lost pets yet'});
+        checkErrors(req,res);
 
-        res.status(200).json({response, msg: 'These are the lost pets that we have registered. Did you see any of them?'});
+        let dbResponse = await LostPet.find({}).select('code photo_url isLost lost_at -_id');
+
+        const userResponse = lostPetsWLimitFilter(req, res, dbResponse);
+
+        res.status(200).json({userResponse, msg: 'These are the lost pets that we have registered. Did you see any of them?'});
+
     } catch (error) {
         res.status(500).json({error, msg: 'Server error'});
     }
