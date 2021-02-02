@@ -81,7 +81,7 @@ Here you can register a new lost pet passing two parameters:
 
 **image** must be a valid image file, the API only suppports ``` jpeg / jpg / png ``` files.  
 **lost_at** must be a valid Date string, following UTC format:  
-<div align="center">```YYYY-MM-DDThh:mm:ss.sTZD```</div>  
+<div align="center" style="font-style:italic;font-weight:bold">YYYY-MM-DDThh:mm:ss.sTZD</div>  
 
 **YYYY** : *four-digit year*  
 **MM** : *two-digit month (01=January, etc.)*  
