@@ -56,9 +56,9 @@ exports.createUser = async (req, res) => {
 		
 			if(error){
 		
-				throw new Error('sign token error');
+				throw error;
 		
-			} ;
+			}
 			
 			// Inform successful data saving
 		
@@ -71,7 +71,7 @@ exports.createUser = async (req, res) => {
 
 	}catch(error){
 
-		await showErrorToDebug(res);
+		showErrorToDebug(res);
 		
 	}
 
