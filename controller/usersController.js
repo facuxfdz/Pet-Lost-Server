@@ -71,7 +71,7 @@ exports.createUser = async (req, res) => {
 
 	}catch(error){
 
-		showErrorToDebug(res);
+		console.log(showErrorToDebug(res));
 		
 	}
 
