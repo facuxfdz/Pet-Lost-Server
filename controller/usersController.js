@@ -56,7 +56,7 @@ exports.createUser = async (req, res) => {
 		
 			if(error){
 		
-				throw error;
+				throw 'sign failed';
 		
 			}
 			
@@ -71,7 +71,7 @@ exports.createUser = async (req, res) => {
 
 	}catch(error){
 
-		console.log(showErrorToDebug(res));
+		showErrorToDebug(res);
 		
 	}
 
