@@ -15,7 +15,7 @@ to get all the lost pets in our databases
 Make a GET petition to  
 
 ```/api/main/:limit```  
-  
+
 to get a limited amount of lost pets data. Limit parameter must be an integer greater than 0.  
 
 ## Create an user to register lost pets  
@@ -81,7 +81,8 @@ Here you can register a new lost pet passing two parameters:
 
 **image** must be a valid image file, the API only suppports ``` jpeg / jpg / png ``` files.  
 **lost_at** must be a valid Date string, following UTC format:  
-```YYYY-MM-DDThh:mm:ss.sTZD```  
+<div align="center">```YYYY-MM-DDThh:mm:ss.sTZD```</div>  
+
 **YYYY** : *four-digit year*  
 **MM** : *two-digit month (01=January, etc.)*  
 **DD** : *two-digit day of month (01 through 31)*  
