@@ -15,7 +15,7 @@ exports.getData = async (req, res) => {
 
     } catch (error) {
         
-        showErrorToDebug(res);
+        showErrorToDebug(res, error);
         
     }
 }
@@ -35,7 +35,7 @@ exports.getLimitData = async (req, res) => {
 
     } catch (error) {
         
-        showErrorToDebug(res);
+        showErrorToDebug(res, error);
 
     }
 }

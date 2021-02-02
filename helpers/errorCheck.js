@@ -8,7 +8,7 @@ exports.checkErrors = (req, res) => {
     }
 }
 
-exports.showErrorToDebug = (res) => {
+exports.showErrorToDebug = (res, error) => {
     
     const ERROR_COLOR = "\x1b[1;31m%s\x1b[0m"; 
     

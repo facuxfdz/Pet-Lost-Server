@@ -18,7 +18,7 @@ exports.checkCode = async (req, res) => {
 
     } catch (error) {
 
-        showErrorToDebug(res);          
+        showErrorToDebug(res, error);          
 
     }
     
@@ -54,7 +54,7 @@ exports.updatePetStatus = async (req, res) => {
 
     } catch (error) {
 
-        showErrorToDebug(res);
+        showErrorToDebug(res, error);
         
     }
 

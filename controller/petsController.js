@@ -51,7 +51,7 @@ exports.registerLostPet = async (req, res) => {
     
     } catch (error) {
 
-        showErrorToDebug(res);
+        showErrorToDebug(res, error);
 
     }
 
