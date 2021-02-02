@@ -4,6 +4,7 @@
   "description": "This is a group project that will help to find lost pets",
   "main": "index.js",
   "scripts": {
+    "start": "node .",
     "dev": "nodemon ."
   },
   "repository": {
