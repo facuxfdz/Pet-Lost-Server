@@ -16,6 +16,6 @@ exports.showErrorToDebug = (res) => {
 
     console.log(ERROR_COLOR, error);
 
-    res.status(500).json({msg: 'An error has ocurred', error});
+    return res.status(500).json({msg: 'An error has ocurred', error});
 
 }
