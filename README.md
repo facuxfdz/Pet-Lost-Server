@@ -3,17 +3,15 @@
 *This is a web application to find lost pets*
 
 ## Main data  
-*** No auth required ***  
+***No auth required***  
 Make a GET petition to  
 
-``` 
-/api/main
+```/api/main```  
 
-```  
 to get all the lost pets in our databases  
 
 ## Main with a limited amount of results  
-*** No auth required ***  
+***No auth required***  
 Make a GET petition to  
 
 ``` 
@@ -23,12 +21,11 @@ Make a GET petition to
 to get a limited amount of lost pets data. Limit parameter must be an integer greater than 0.  
 
 ## Create an user to register lost pets  
-*** No auth required ***  
+***No auth required***  
 Make a POST petition to   
-``` 
-/api/users
 
-```  
+```/api/users```  
+
 to sign up in the API, the parameters that you must provide are:  
 
 | Field Name | Data Type | Description |
@@ -40,16 +37,12 @@ to sign up in the API, the parameters that you must provide are:
 All fields are required.  
 
 ## Sign in  
-*** No auth required ***  
+***No auth required***  
 Make a POST petition to 
 
-```  
-/api/login
+```/api/login```  
 
-```  
-to sign in in the API.  
-
-You must provide two parameters in JSON format:  
+To sign in in the API you must provide two parameters in JSON format:  
 
 | param 1 | param 2 |  
 | ------- | ------- |
@@ -57,38 +50,33 @@ You must provide two parameters in JSON format:
 
 
 ## Get a lost pet info (verify if it exists)
-*** No auth required ***  
+***No auth required***  
 Make a GET petition to  
 
-```  
-/api/inform/:code
-
-```  
+```/api/inform/:code```  
 
 This endpoint will give you the pet owner data in case you found it, all you need to provide as url parameter is the code of the registered animal.  
 Code must be an positive integer.  
 
 ## Inform your pet as found
-*** Auth required ***
+***Auth required***  
+
 Make a PUT petition to  
 
-```  
-/api/inform/:code  
-
-```  
+```/api/inform/:code```  
 
 Only available to authenticated users, only them can change the "lost status" of their pets.  
 You must provide the pet code in the url parameters, then the "isLost" status is switched to false.  
 
 ## Register a lost pet  
-*** Auth required ***  
+***Auth required***  
+
 Make a POST petition to  
 
-```  
-/api/pets    
+```/api/pets```  
 
-```  
 Here you can register a new lost pet passing two parameters:  
+
 | param1 | param 2 |
 | -------| ------- |
 | image  | lost_at |
