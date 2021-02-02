@@ -3,6 +3,8 @@ const router = express.Router();
 const usersController = require('../controller/usersController');
 const { check } = require('express-validator');
 
+// Endpoint to create users
+// /api/users
 router.post('/',
 	[
 		check('name', 'All fields are required').not().isEmpty(),

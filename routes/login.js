@@ -3,6 +3,8 @@ const router = express.Router();
 const authController = require('../controller/authController');
 const { check } = require('express-validator');
 
+// Endpoint that authenticate an user
+// /api/login
 router.post('/',
     [
         check('email', 'All fields are required').not().isEmpty(),

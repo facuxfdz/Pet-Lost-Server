@@ -4,6 +4,8 @@ const petsController = require('../controller/petsController');
 const auth = require('../middleware/auth');
 const { check } = require('express-validator');
 
+// Endpoint that register a lost pet (just an authenticated user can access to this url)
+// /api/pets
 router.post('/',
     auth,
     [
