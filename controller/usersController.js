@@ -5,11 +5,11 @@ const { checkErrors, showErrorToDebug } = require('../helpers/errorCheck');
 
 exports.createUser = async (req, res) => {
 
-	// Checking for errors in check express-validator middleware 
-	checkErrors(req,res);
-
+	
 	try {		
-
+		
+		checkErrors(req,res);
+		
 		const { name, password, email } = req.body; // Take all the fields from each key value part of req.body
 		
 		// Check if the user already exists

@@ -5,13 +5,14 @@ const jwt = require('jsonwebtoken');
 
 exports.authUser = async (req, res) => {
     
-    // Check for errors
-    checkErrors(req,res);
-
-    const { email, password } = req.body;
-
+    
+    
     try {
         
+        checkErrors(req,res);
+
+        const { email, password } = req.body;
+
         // Check email field
 
         let user = await User.findOne({ email });

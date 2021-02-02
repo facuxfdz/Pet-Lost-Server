@@ -6,11 +6,11 @@ const cloudinary = require('cloudinary');
 const { checkErrors, showErrorToDebug } = require('../helpers/errorCheck');
 exports.registerLostPet = async (req, res) => {
 
-    // Checking for errors in "lost_at" field
-    checkErrors(req,res);
     
     try {
-
+        
+        checkErrors(req,res);
+        
         /* 	
         Multer middleware is launched just when a file is sended to our server, 
         because of this we have to validate here that there are some file uploaded
