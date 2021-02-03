@@ -75,7 +75,7 @@ Make a POST petition to
 
 Here you can register a new lost pet passing two parameters:  
 
-| param1 | param 2 |
+| param 1 | param 2 |
 | -------| ------- |
 | image  | lost_at |
 
